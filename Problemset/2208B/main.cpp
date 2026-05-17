@@ -3,8 +3,8 @@
 #include <algorithm>
 #include <array>
 #include <queue>
-//21:07 - 
-
+//21:07 - 21:44 
+//3rd sub
 using namespace std;
 
 struct card { 
