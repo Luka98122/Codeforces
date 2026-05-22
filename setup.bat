@@ -12,8 +12,8 @@ REM =========================================
 echo Creating .vscode folder...
 if not exist ".vscode" mkdir ".vscode"
 
-git config --global user.name "Luka Markovic"
-git config --global user.email "Luka98122@example.com"
+git config --global user.name "Luka98122"
+git config --global user.email "Luka98122@gmail.com"
 
 
 REM =========================================
