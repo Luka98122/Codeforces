@@ -1,48 +1,51 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
 
-    
     int t;
     cin >> t;
 
-    for (int _=0;_<t;++_){
-        int n,k;
+    while (t--) {
+        int n, k;
         cin >> n >> k;
+        --k;
 
-        vector<int> heights(n,0);
-        for (int i =0;i<n;++i){
-            cin >> heights[i];
+        vector<long long> h(n);
+
+        for (auto &x : h)
+            cin >> x;
+
+        long long start = h[k];
+        long long mx = *max_element(h.begin(), h.end());
+
+        if (start == mx) {
+            cout << "YES\n";
+            continue;
         }
-        int m = heights[k];
-        sort(heights.begin(), heights.end());
-        vector<int> h;
-        if (heights[0]>=m){
-            h.push_back(heights[0]);
-        }
-        int ind = 0;
-        for (int i=1;i<n;++i){
-            if (heights[i] >= m && (ind==0 || h[ind-1]!=heights[i])){
-                h.push_back(heights[i]);
-                ind++;
+
+        sort(h.begin(), h.end());
+
+        vector<long long> v;
+
+        for (auto x : h) {
+            if (x >= start) {
+                if (v.empty() || v.back() != x)
+                    v.push_back(x);
             }
         }
-        bool br = false;
-        int curWater=0;
-        for (int i=0;i<ind-1;++i){
-            if (curWater<h[i+1]-h[i]) {
-                cout << "NO" << '\n';
-                br = true;
+
+        bool ok = true;
+
+        for (int i = 0; i + 1 < v.size(); ++i) {
+            if (v[i + 1] > 2 * v[i]) {
+                ok = false;
                 break;
             }
-            curWater+=h[i+1]-h[i];
         }
-        if (br) break;
-        cout << "YES" << '\n';
 
+        cout << (ok ? "YES\n" : "NO\n");
     }
 }
