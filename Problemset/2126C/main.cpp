@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+//A
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
@@ -19,28 +19,16 @@ int main() {
             cin >> x;
 
         long long start = h[k];
-        long long mx = *max_element(h.begin(), h.end());
-
-        if (start == mx) {
-            cout << "YES\n";
-            continue;
-        }
 
         sort(h.begin(), h.end());
 
-        vector<long long> v;
-
-        for (auto x : h) {
-            if (x >= start) {
-                if (v.empty() || v.back() != x)
-                    v.push_back(x);
-            }
-        }
-
         bool ok = true;
 
-        for (int i = 0; i + 1 < v.size(); ++i) {
-            if (v[i + 1] > 2 * v[i]) {
+        for (int i = 1; i < n; ++i) {
+            if (start > h[i])
+                continue;
+
+            if (h[i] > h[i - 1] + start) {
                 ok = false;
                 break;
             }
