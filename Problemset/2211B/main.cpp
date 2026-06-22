@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define ll long long
-//INFO 11:21 - 12:12
+//INFO 11:21 - 12:12 Accepted FT
 int main () {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
